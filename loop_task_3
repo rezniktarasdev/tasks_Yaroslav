@@ -1,35 +1,31 @@
-/* Задача №3 Запросите у пользователя 2 числа и выведите все числа в промежутке между двумя числами 
-(пользователь вводит 2 и 6, выводится 3,4,5). 
-Вывести ошибку, если числа одинаковые. Учесть, что первое введенное число может быть больше первого. */
 
+// Запросите 2 числа у пользователя (prompt) и нарисуйте прямоугольник из X-ов в документ
+//  где первое число - это ширина, а второе - высота.
+// Пример
+//  мы принимаем 2 числа: 3 и 4;
+// Результат
+//  XXX
+//  XXX
+//  XXX
+//  XXX
 
 
 let intFirst,
-    intSecond;
- 
+   intSecond;
 
 do {
-   intFirst = prompt('Введите Первое число: ', 1);
-   if (isNaN(intFirst)) {
-      alert(intFirst + " - это не число");
-      console.log(intFirst);
-   }
-} while (isNaN(intFirst) || intFirst == '');
- 
-do {
-   intSecond = prompt('Введите Второе число: ', 3);
-   if (isNaN(intSecond)) {
-      alert(intSecond + " - это не число");
-      console.log(intSecond);
-   } else if (intSecond === null) {
-      break
-   } else if (intFirst === intSecond) {
-      alert(intSecond + " - равное первому числу");
-   }
-} while (isNaN(intSecond) || intSecond == '' || intFirst === intSecond);
- 
+   intFirst = (prompt('Введите первое число от 1 до 10', 1))
 
-if (intFirst < intSecond) {
- 
-   for (i = +intFirst + 1; i < +intSecond; i++) {
-      document.write(i)
+} while (isNaN(intFirst) && !(intFirst >= 0 && intFirst < 10));
+
+
+do {
+   intSecond = (prompt('Введите второе числа от 1 до 10', 1))
+   for (let i = 0; i < Number(intSecond); i++) {
+      for (let j = 0; j < Number(intFirst); j++) {
+         document.write(' x ');
+      }
+      document.write('<br>');
+   }
+}
+while (Number.isNaN(intSecond) && !(intSecond >= 0 && intSecond < 10));
