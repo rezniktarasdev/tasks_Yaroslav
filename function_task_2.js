@@ -4,7 +4,13 @@
 let arr = ['🐑', '🐑', '🐑']
 
 function getCloneArr(arr) {
-   let cloneArr = arr.slice()
+   let cloneArr = [];
+   if (arr.length > 0) {
+      for (let elem of arr) {
+         cloneArr.push(elem)
+      }
+      return cloneArr;
+   }
    return cloneArr;
 }
 
