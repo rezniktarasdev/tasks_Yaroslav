@@ -9,7 +9,7 @@ let arr = [1, 2, 3];
 function getChangeArr(arr, ...args) {
    if (args.length > 0) {
       for (let i = 0; i < args.length; i++) {
-         arr.push(args[i])
+          arr[arr.length] = args[i];
       }
       return arr;
    }
