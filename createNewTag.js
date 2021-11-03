@@ -8,18 +8,23 @@
 // можете усложнить добавлением атрибутов
 
 
-function CreateNewTag(tag, typeTag) {
+function CreateNewTag(tag, typeTag, attrName, attrProp) {
   this.tag = tag;
   this.typeTag = typeTag;
-  this.display = function (content) {
-    if (typeTag === "double") {
-      return `< ${this.tag}>${content} < /${this.tag}>`;
-    }
-    if (typeTag === "single") {
-      return `< ${this.tag} value ="${content}">`;
-    }
-  };
+  this.attrName = attrName;
+  this.attrProp = attrProp;
 }
 
-let h1Elem = new CreateNewTag("h1", "single");
+CreateNewTag.prototype.display = function (content) {
+  if (this.typeTag === "double") {
+    return `< ${this.tag} ${this.attrName}="${this.attrProp}"> ${content} < /${this.tag}>`;
+  }
+  if (this.typeTag === "single") {
+    return `< ${this.tag} value ="${content}" ${this.attrName}="${this.attrProp}">`;
+  }
+};
+
+let h1Elem = new CreateNewTag("h1", "double", "class", "title");
 document.write(h1Elem.display("Hello"));
+
+console.log(h1Elem);
