@@ -17,10 +17,14 @@ function CreateNewTag(tag, typeTag, attrName, attrProp) {
 
 CreateNewTag.prototype.display = function (content) {
   if (this.typeTag === "double") {
-    return `< ${this.tag} ${this.attrName}="${this.attrProp}"> ${content} < /${this.tag}>`;
+    return typeof this.attrName !== 'undefined' && typeof this.attrProp !== 'undefined' ?
+      `< ${this.tag} ${this.attrName}="${this.attrProp}"> ${content} < /${this.tag}>` :
+      `< ${this.tag}> ${content} < /${this.tag}>`;
   }
   if (this.typeTag === "single") {
-    return `< ${this.tag} value ="${content}" ${this.attrName}="${this.attrProp}">`;
+    return typeof this.attrName !== 'undefined' && typeof this.attrProp !== 'undefined' ?
+      `< ${this.tag} value ="${content}" ${this.attrName}="${this.attrProp}">` :
+      `< ${this.tag} value ="${content}">`;
   }
 };
 
